@@ -1,0 +1,7 @@
+{
+  "name": "react-canvas",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.16.4"
+  }
+}

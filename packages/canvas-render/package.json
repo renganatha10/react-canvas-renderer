@@ -1,0 +1,16 @@
+{
+  "name": "canvas-render",
+  "version": "0.0.1",
+  "description": "\"Custom Renderer for React\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Renganatha. A",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-reconciler": "^0.20.4",
+    "shallow-equal": "^1.2.0"
+  }
+}
