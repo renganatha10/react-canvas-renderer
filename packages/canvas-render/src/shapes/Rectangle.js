@@ -1,5 +1,3 @@
-import Container from './Container';
-
 class Rectangle {
   constructor(props) {
     this.props = props;

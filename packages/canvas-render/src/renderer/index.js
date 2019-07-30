@@ -1,4 +1,3 @@
-import React from 'react';
 import CanvasRenderer from './host_config';
 
 const containers = new WeakMap();

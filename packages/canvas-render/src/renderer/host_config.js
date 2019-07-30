@@ -1,4 +1,3 @@
-import shallowEqual from 'shallow-equal/objects';
 import Reconciler from 'react-reconciler';
 import Rectangle from '../shapes/Rectangle';
 import Container from '../shapes/Container';
@@ -9,12 +8,12 @@ const NOOP = () => {};
 const CanvasRenderer = Reconciler({
   createInstance(type, props) {
     switch (type) {
-      case 'rect':
-        return new Rectangle(props);
-      case 'canvas':
-        return new Container(props);
-      default:
-        throw new Error(`Invalid component type: ${type}`);
+    case 'rect':
+      return new Rectangle(props);
+    case 'canvas':
+      return new Container(props);
+    default:
+      throw new Error(`Invalid component type: ${type}`);
     }
   },
 
@@ -59,11 +58,8 @@ const CanvasRenderer = Reconciler({
 
   now: () => performance.now(),
   supportsMutation: true,
-  prepareUpdate() {
-    return true;
-  },
   appendChildToContainer: () => {},
-  commitUpdate(instance, updatePayload, type, oldProps, newPropsy) {},
+  commitUpdate() {},
   commitTextUpdate() {},
   removeChild() {},
 });

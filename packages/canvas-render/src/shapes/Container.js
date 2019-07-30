@@ -1,5 +1,5 @@
 class Container {
-  constructor(canvas) {
+  constructor() {
     this.canvas = document.getElementById('canvas');
   }
 
