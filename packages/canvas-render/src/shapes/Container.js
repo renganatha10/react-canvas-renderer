@@ -3,15 +3,16 @@ class Container {
     this.canvas = document.getElementById('canvas');
   }
 
-  context() {
+  get type() {
+    return 'Container';
+  }
+
+  get context() {
     return this.canvas.getContext('2d');
   }
 
   appendInitialChild(child) {
-    console.log(child, 'child');
-    if (typeof child !== 'string') {
-      child.render(this.context());
-    }
+    child.render(this.context);
   }
 }
 

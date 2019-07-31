@@ -1,6 +1,8 @@
 import Reconciler from 'react-reconciler';
 import Rectangle from '../shapes/Rectangle';
 import Container from '../shapes/Container';
+import Circle from '../shapes/Circle';
+import Text from '../shapes/Text';
 
 const EMPTY_OBJECT = {};
 const NOOP = () => {};
@@ -8,21 +10,37 @@ const NOOP = () => {};
 const CanvasRenderer = Reconciler({
   createInstance(type, props) {
     switch (type) {
-    case 'rect':
-      return new Rectangle(props);
     case 'canvas':
       return new Container(props);
+    case 'rect':
+      return new Rectangle(props);
+    case 'text':
+      return new Text(props);
+    case 'circle':
+      return new Circle(props);
     default:
       throw new Error(`Invalid component type: ${type}`);
     }
   },
 
-  createTextInstance(text) {
-    return text;
+  createTextInstance(child) {
+    return child;
   },
 
   appendInitialChild(parentInstance, child) {
-    parentInstance.appendInitialChild(child);
+    if (parentInstance.type !== 'Text' && typeof child === 'string') {
+      throw new Error(
+        `You cannot pass text as child of ${
+          parentInstance.type
+        }. Enclose Text in <Text /> component`
+      );
+    }
+
+    if (parentInstance.type === 'Container' || parentInstance.type === 'Text') {
+      parentInstance.appendInitialChild(child);
+    } else {
+      throw new Error('Use <Group /> to created nested Canvas Objects');
+    }
   },
 
   finalizeInitialChildren() {
