@@ -3,10 +3,12 @@ module.exports = {
     browser: true,
     es6: true,
   },
+  parser: 'babel-eslint',
   extends: ['eslint:recommended'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
+    module: 'readonly',
   },
   parserOptions: {
     ecmaVersion: 2018,

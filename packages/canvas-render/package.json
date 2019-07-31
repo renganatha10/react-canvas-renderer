@@ -9,11 +9,16 @@
   "author": "Renganatha. A",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "react": "^16.8.6",
     "react-reconciler": "^0.20.4",
     "shallow-equal": "^1.2.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
     "eslint": "^6.1.0"
   }
 }

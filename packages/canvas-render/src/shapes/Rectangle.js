@@ -8,15 +8,10 @@ class Rectangle {
   }
 
   render(ctx) {
-    const {
-      backgroundColor = '#000',
-      left = 0,
-      top = 0,
-      width = 0,
-      height = 0,
-    } = this.props.style || {};
+    const { fill = '#000', left = 0, top = 0, width = 0, height = 0 } =
+      this.props || {};
 
-    ctx.fillStyle = backgroundColor;
+    ctx.fillStyle = fill;
     ctx.fillRect(left, top, width, height);
   }
 }

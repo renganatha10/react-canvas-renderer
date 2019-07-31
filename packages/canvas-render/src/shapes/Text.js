@@ -16,13 +16,13 @@ class Text {
     const {
       fontSize = 12,
       fontFamily = 'Arial',
-      backgroundColor = '#000',
+      fill = '#000',
       left = 0,
       top = 0,
-    } = this.props.style || {};
+    } = this.props || {};
 
     ctx.font = `${fontSize}px ${fontFamily}`;
-    ctx.fillStyle = backgroundColor;
+    ctx.fillStyle = fill;
     ctx.fillText(this.text, top, left);
   }
 }

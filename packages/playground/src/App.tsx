@@ -1,39 +1,27 @@
 import React from 'react';
+
 //@ts-ignore
-import renderCanvas from 'canvas-render/src';
+import canverRender from 'canvas-render';
 import './App.css';
+
+const { Circle, Rect, Text, Container } = canverRender;
 
 const CanvasComp: React.FC = () => {
   return (
-    <canvas>
-      <rect
-        style={{
-          backgroundColor: 'red',
-          height: 100,
-          width: 100,
-          left: 10,
-          top: 10,
-        }}
-      />
-      <circle style={{ width: 100, top: 100, left: 500 }} />
-      <text style={{ fontSize: 20, left: 100, top: 100 }}>Renga</text>
-    </canvas>
+    <Container>
+      <Rect height={100} width={100} left={100} top={100} fill={'red'} />
+      <Circle radius={100} top={100} left={500} />
+      <Text fontSize={20} left={100} top={100}>
+        Renga
+      </Text>
+    </Container>
   );
 };
 
 const App: React.FC = () => {
   React.useEffect(() => {
     const canvas = document.getElementById('canvas') as HTMLCanvasElement;
-    renderCanvas(
-      //@ts-ignore
-      <CanvasComp />,
-      canvas
-    );
-
-    if (canvas) {
-      // const ctx = canvas.getContext('2d');
-      // // ctx && ctx.strokeStyle =  (0, 0, 100, 100);
-    }
+    canverRender.render(<CanvasComp />, canvas);
   }, []);
 
   return (

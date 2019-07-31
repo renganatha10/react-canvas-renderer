@@ -8,12 +8,11 @@ class Circle {
   }
 
   render(ctx) {
-    const { backgroundColor = 'black', left = 0, top = 0, width = 10 } =
-      this.props.style || {};
+    const { fill = 'black', left = 0, top = 0, radius = 10 } = this.props || {};
 
-    ctx.fillStyle = backgroundColor;
+    ctx.fillStyle = fill;
     ctx.beginPath();
-    ctx.arc(left, top, width, 0, 2 * Math.PI);
+    ctx.arc(left, top, radius, 0, 2 * Math.PI);
     ctx.stroke();
   }
 }

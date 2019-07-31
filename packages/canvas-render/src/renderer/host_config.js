@@ -10,13 +10,13 @@ const NOOP = () => {};
 const CanvasRenderer = Reconciler({
   createInstance(type, props) {
     switch (type) {
-    case 'canvas':
+    case 'Container':
       return new Container(props);
-    case 'rect':
+    case 'Rect':
       return new Rectangle(props);
-    case 'text':
+    case 'Text':
       return new Text(props);
-    case 'circle':
+    case 'Circle':
       return new Circle(props);
     default:
       throw new Error(`Invalid component type: ${type}`);

@@ -1,6 +1,9 @@
 {
   "name": "react-canvas",
   "private": true,
+  "scripts": {
+    "start:playground": "cd packages/playground && yarn start"
+  },
   "devDependencies": {
     "lerna": "^3.16.4"
   }
