@@ -1,4 +1,4 @@
-import CanvasRenderer from './host_config';
+import CanvasRenderer from './hostConfig';
 
 const containers = new WeakMap();
 

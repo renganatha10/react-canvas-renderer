@@ -12,7 +12,8 @@
     "@babel/polyfill": "^7.4.4",
     "react": "^16.8.6",
     "react-reconciler": "^0.20.4",
-    "shallow-equal": "^1.2.0"
+    "shallow-equal": "^1.2.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
