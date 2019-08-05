@@ -21,9 +21,9 @@ class CanvasComp extends React.PureComponent<{}, { timer: number }> {
   }
 
   public componentDidMount() {
-    setInterval(() => {
-      this.setState({ timer: this.state.timer + 1 });
-    }, 1000);
+    // setInterval(() => {
+    //   this.setState({ timer: this.state.timer + 1 });
+    // }, 1000);
   }
 
   render() {
@@ -31,7 +31,7 @@ class CanvasComp extends React.PureComponent<{}, { timer: number }> {
     return (
       <Container>
         <Rect height={100} width={100} left={100} top={100} fill={'red'} />
-        {this.state.timer === 10 ? (
+        {/* {this.state.timer === 10 ? (
           <Circle radius={100} top={100} left={500} />
         ) : (
           <Circle radius={100} top={100} left={200} />
@@ -42,7 +42,7 @@ class CanvasComp extends React.PureComponent<{}, { timer: number }> {
           <Text fontSize={20} left={100} top={100}>
             Renga
           </Text>
-        )}
+        )} */}
       </Container>
     );
   }

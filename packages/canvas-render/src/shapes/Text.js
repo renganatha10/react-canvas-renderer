@@ -32,7 +32,7 @@ class Text {
     this._render(ctx, props);
   }
 
-  _render(ctx, props) {
+  render(ctx, props, text) {
     const {
       fontSize = 12,
       fontFamily = 'Arial',
@@ -43,8 +43,8 @@ class Text {
 
     ctx.font = `${fontSize}px ${fontFamily}`;
     ctx.fillStyle = fill;
-    ctx.fillText(this.text, left, top);
+    ctx.fillText(text, left, top);
   }
 }
 
-export default Text;
+export default new Text();

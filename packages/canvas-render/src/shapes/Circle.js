@@ -29,7 +29,7 @@ class Circle {
     this._render(ctx, props);
   }
 
-  _render(ctx, props) {
+  render(ctx, props) {
     const { fill = 'black', left = 0, top = 0, radius = 10 } = props;
     ctx.fillStyle = fill;
     ctx.beginPath();
@@ -38,4 +38,4 @@ class Circle {
   }
 }
 
-export default Circle;
+export default new Circle();

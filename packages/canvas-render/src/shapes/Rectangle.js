@@ -28,7 +28,7 @@ class Rectangle {
     this._render(ctx, props);
   }
 
-  _render(ctx, props) {
+  render(ctx, props) {
     const { fill = '#000', left = 0, top = 0, width = 0, height = 0 } = props;
     ctx.fillStyle = fill;
     ctx.fillRect(left, top, width, height);
