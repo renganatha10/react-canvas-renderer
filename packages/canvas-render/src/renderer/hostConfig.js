@@ -1,8 +1,9 @@
 import Reconciler from 'react-reconciler';
+import uuid from 'uuid/v4';
 
-import hostObject from './hostObject';
-import middleware from './middleware';
+import { Container, Circle, Rectangle, Text } from './../shapes';
 
+import canvasCollections from '../utils/canvas-collections';
 import deepEqual from '../utils/deepEqual';
 
 const EMPTY_OBJECT = {};
@@ -11,15 +12,14 @@ const NOOP = () => {};
 const CanvasRenderer = Reconciler({
   createInstance(type, props) {
     switch (type) {
-    case 'Container': {
-      const canvas = document.getElementById('canvas');
-      const context = canvas.getContext('2d');
-      return hostObject(middleware)(type, props, context);
-    }
+    case 'Container':
+      return new Container();
     case 'Rect':
+      return Rectangle.init(props, uuid());
     case 'Text':
+      return Text.init(props, uuid());
     case 'Circle':
-      return hostObject(middleware)(type, props);
+      return Circle.init(props, uuid());
     default:
       throw new Error(`Invalid component type: ${type}`);
     }
@@ -30,13 +30,6 @@ const CanvasRenderer = Reconciler({
   },
 
   appendInitialChild(parentInstance, child) {
-    const {
-      middleware: { add, setContext },
-      type,
-      props,
-      ctx,
-    } = parentInstance;
-
     if (parentInstance.type !== 'Text' && typeof child === 'string') {
       throw new Error(
         `You cannot pass text as child of ${
@@ -47,9 +40,8 @@ const CanvasRenderer = Reconciler({
 
     if (parentInstance.type === 'Container' || parentInstance.type === 'Text') {
       if (parentInstance.type === 'Container') {
-        setContext(ctx);
+        parentInstance.appendChild(child);
       }
-      add({ type, props, child });
     } else {
       throw new Error('Use <Group /> to created nested Canvas Objects');
     }
@@ -95,13 +87,6 @@ const CanvasRenderer = Reconciler({
   removeChildFromContainer() {},
 
   appendChild(parentInstance, child) {
-    const {
-      middleware: { add, setContext },
-      type,
-      props,
-      ctx,
-    } = parentInstance;
-
     if (parentInstance.type !== 'Text' && typeof child === 'string') {
       throw new Error(
         `You cannot pass text as child of ${
@@ -112,22 +97,21 @@ const CanvasRenderer = Reconciler({
 
     if (parentInstance.type === 'Container' || parentInstance.type === 'Text') {
       if (parentInstance.type === 'Container') {
-        setContext(ctx);
+        parentInstance.appendChild(child);
       }
-      add({ type, props, child });
     } else {
       throw new Error('Use <Group /> to created nested Canvas Objects');
     }
   },
 
-  removeChild() {
-    // parentInstance.removeChild(child);
+  removeChild(parentInstance, child) {
+    parentInstance.removeChild(child);
   },
 
   commitUpdate(instance, updatePayload, type, oldProps, newProps) {
     if (!(oldProps.children || newProps.children)) {
       if (!deepEqual(oldProps, newProps)) {
-        // instance.update(oldProps, newProps);
+        canvasCollections.updateCollection(instance.id, newProps);
       }
     }
   },
